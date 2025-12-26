@@ -1,0 +1,7 @@
+{
+  "name": "LevelUp: Life & Focus",
+  "description": "A gamified self-improvement app combining habit tracking, sleep analysis, and AI-powered workout verification to unlock screentime.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
