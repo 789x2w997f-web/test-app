@@ -1,7 +1,8 @@
 {
-  "name": "LevelUp: Life & Focus",
-  "description": "A gamified self-improvement app combining habit tracking, sleep analysis, and AI-powered workout verification to unlock screentime.",
+  "name": "BELTION",
+  "description": "The ultimate productivity economy. Trade discipline for leisure. Gamified focus, habit tracking, and workout verification.",
   "requestFramePermissions": [
-    "camera"
+    "camera",
+    "microphone"
   ]
 }
