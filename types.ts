@@ -1,48 +1,62 @@
+
 export enum AppView {
   DASHBOARD = 'DASHBOARD',
+  JOURNEY = 'JOURNEY',
+  COMMUNITY = 'COMMUNITY',
+  CALENDAR = 'CALENDAR',
   HABITS = 'HABITS',
   SLEEP = 'SLEEP',
-  WORKOUT = 'WORKOUT',
-  PROFILE = 'PROFILE'
+  WORKOUT = 'WORKOUT'
 }
 
-export interface UserStats {
-  level: number;
-  xp: number;
-  xpToNextLevel: number;
-  screentimeBalanceMinutes: number; // Earned minutes
-  streakDays: number;
+// Added Difficulty type for HabitTracker
+export type Difficulty = 'easy' | 'medium' | 'hard';
+
+// Added XP_TABLE constant for Habit rewards
+export const XP_TABLE = {
+  easy: 10,
+  medium: 25,
+  hard: 50
+};
+
+export type ActivityType = 'WORK' | 'WORKOUT' | 'SLEEP' | 'HABIT';
+
+export interface Activity {
+  id: string;
+  type: ActivityType;
+  label: string;
+  durationMinutes: number;
+  earnedLeisureMinutes: number;
+  timestamp: Date;
 }
 
 export interface Habit {
   id: string;
   name: string;
-  difficulty: 'easy' | 'medium' | 'hard';
-  completedToday: boolean;
-  streak: number;
-  xpReward: number;
+  completed: boolean;
+  // Added optional fields for HabitTracker consistency
+  completedToday?: boolean;
+  color: string;
+  difficulty?: Difficulty;
+  xpReward?: number;
+  streak?: number;
 }
 
+// Added SleepLog interface for SleepTracker
 export interface SleepLog {
   date: string;
   hours: number;
-  quality: number; // 1-10
-  aiAnalysis?: string;
+  quality: number;
 }
 
-export interface WorkoutLog {
-  id: string;
-  timestamp: Date;
-  type: string;
-  reps: number;
-  verifiedByAI: boolean;
-  xpEarned: number;
-  screentimeEarned: number;
-}
-
-export const XP_TABLE = {
-  easy: 10,
-  medium: 25,
-  hard: 50,
-  workoutBase: 20,
-};
+export interface UserStats {
+  leisureBalance: number; // in minutes
+  dailyGoalProgress: number; // 0-100
+  streak: number;
+  totalWorkHours: number;
+  // Added properties used in Layout.tsx
+  xp: number;
+  xpToNextLevel: number;
+  level: number;
+  streakDays: number;
+  screentimeBalanceMinutes: number;
